@@ -1,0 +1,277 @@
+<html> <head>
+<title>8cc.js</title>
+
+<style>
+textarea {
+  border-width: 3px;
+}
+.outer {
+  display: flex;
+  flex-wrap: wrap;
+}
+.box {
+  display: inline-flex;
+  flex-direction: column;
+}
+</style>
+
+<script src="headers.js"></script>
+<script src="8cc.c.eir.js"></script>
+<script>var main_8cc = main;</script>
+<script src="elc.c.eir.js"></script>
+<script>var main_elc = main;</script>
+<script src="eli.c.eir.js"></script>
+<script>var main_eli = main;</script>
+
+<script>
+
+var $ = function(id) {
+   return document.getElementById(id);
+};
+
+var get_getchar = function(input) {
+  var ip = 0;
+  return function() {
+    return input.charCodeAt(ip++) | 0;
+  };
+};
+
+var OUTPUTS = '';
+function get_putchar() {
+  OUTPUTS = '';
+  return function(c) {
+    OUTPUTS += String.fromCharCode(c & 255);
+  };
+}
+
+function processInclude(src, used) {
+  return src.replace(/#\s*include\s*[<"](.*?)[>"]/g, function(_, hn) {
+      if (used[hn])
+        return '';
+      used[hn] = true;
+      var h = processInclude(HEADERS[hn], used);
+      if (!h) {
+        throw hn + ": No such file or directory";
+      }
+      return h;
+    });
+}
+
+function filterCompilerOutput(out) {
+  return out.replace(/\x1b\[1;31m(\[.*?\])\x1b\[0m(.*)/g, function(_, t, m) {
+          $("err").innerHTML += t + m + "\n";
+          return '';
+        });
+}
+
+function assemble() {
+  var start = new Date();
+  try {
+    var lang = $("lang").value;
+    var eir = lang + "\n" + $("eir").value;
+    main_elc(get_getchar(eir), get_putchar());
+    var trg = OUTPUTS;
+    if (lang == 'x86' || lang == 'piet') {
+      var escaped = '"';
+      for (var i = 0; i < trg.length; i++) {
+        var c = trg.charCodeAt(i);
+        if (c == 34 || c == 92) {
+          escaped += '\\';
+          escaped += trg[i];
+        } else if (c >= 0x20 && c <= 0x7e) {
+          escaped += trg[i];
+        } else {
+          escaped += "\\x";
+          escaped += (c >> 4).toString(16);
+          escaped += (c & 15).toString(16);
+        }
+        if (i % 40 == 39) {
+          escaped += "\" +\n\"";
+        }
+      }
+      trg = escaped + '"';
+    }
+    $("trg").value = trg;
+  } catch (e) {
+    console.error(e);
+    $("err").innerHTML += e + "\n";
+  }
+  console.log("assemble time: " + (new Date() - start) * 0.001);
+}
+
+function compile() {
+  var start = new Date();
+  try {
+    var src = $("src").value;
+    src = processInclude(src, {});
+    console.log(src);
+
+    main_8cc(get_getchar(src), get_putchar());
+    var eir = filterCompilerOutput(OUTPUTS);
+    $("eir").value = eir;
+  } catch (e) {
+    console.error(e);
+    $("err").innerHTML += e + "\n";
+  }
+  console.log("compile time: " + (new Date() - start) * 0.001);
+}
+
+function runEIR() {
+  var start = new Date();
+  try {
+    var eir = $("eir").value;
+    main_eli(get_getchar(eir), get_putchar());
+    $("out").value = OUTPUTS;
+  } catch (e) {
+    console.error(e);
+    $("err").innerHTML += e + "\n";
+  }
+  console.log("run EIR time: " + (new Date() - start) * 0.001);
+}
+
+function runJS() {
+  var start = new Date();
+  try {
+    var src = $("src").value;
+    var main = eval($("trg").value + "; main;");
+    main(get_getchar(src), get_putchar());
+    $("out").value = OUTPUTS;
+  } catch (e) {
+    console.error(e);
+    $("err").innerHTML += e + "\n";
+  }
+  console.log("run JS time: " + (new Date() - start) * 0.001);
+}
+
+function hover(b) {
+  var src = null;
+  var dst = null;
+  if (b.value == 'Compile') {
+    src = 'src';
+    dst = 'eir';
+  } else if (b.value == 'Assemble') {
+    src = 'eir';
+    dst = 'trg';
+  } else if (b.value == 'Run EIR') {
+    src = 'eir';
+    dst = 'out';
+  } else if (b.value == 'Run JS') {
+    src = 'trg';
+    dst = 'out';
+  }
+  $('src').style.borderColor = null;
+  $('eir').style.borderColor = null;
+  $('trg').style.borderColor = null;
+  $('out').style.borderColor = null;
+  $(src).style.borderColor = 'blue';
+  $(dst).style.borderColor = 'red';
+}
+
+</script>
+</head>
+
+<body>
+<h1>8cc.js</h1>
+
+<div class="outer">
+
+<div class="box">
+<div class="box">C code</div>
+<div class="box">
+<textarea id="src" cols=40 rows=24>
+// You can run a larger C program (FizzBuzz) by changing this condition.
+// Note you may not want to do this for slower backends (e.g., Brainfuck).
+#if 1
+int putchar(int c);
+
+int main() {
+  const char* p = "Hello, world!\n";
+  for (; *p; p++)
+    putchar(*p);
+  return 0;
+}
+
+#else
+
+#include <stdio.h>
+
+int main() {
+  for (int i = 1; i <= 100; i++) {
+    if (i % 5) {
+      if (i % 3) {
+        printf("%d\n", i);
+      } else {
+        printf("Fizz\n");
+      }
+    } else {
+      printf("FizzBuzz\n" + i * i % 3 * 4);
+    }
+  }
+  return 0;
+}
+
+#endif
+
+</textarea>
+</div>
+</div>
+
+<div class="box">
+<div class="box">ELVM IR</div>
+<div class="box">
+<textarea id="eir" cols=40 rows=24></textarea>
+</div>
+</div>
+
+<div class="box">
+<div class="box">Assembled code</div>
+<div class="box">
+<textarea id="trg" cols=40 rows=24></textarea>
+</div>
+</div>
+
+<div class="box">
+<div class="box">Output</div>
+<div class="box">
+<textarea id="out" cols=40 rows=24></textarea>
+</div>
+</div>
+
+</div>
+
+<pre id="err"></pre>
+
+<select id="lang">
+<option value="js">JavaScript
+<option value="asmjs">JavaScript (asm.js)
+<option value="rb">Ruby
+<option value="py">Python
+<option value="java">Java
+<option value="el">Emacs Lisp
+<option value="c">C
+<option value="x86">x86
+<option value="piet">Piet
+<option value="i">C-INTERCAL
+<option value="ws">Whitespace
+<option value="bef">Befunge
+<option value="bf">Brainfuck
+<option value="unl">Unlambda
+</select>
+
+<input type="button" value="Compile" onclick="compile()" onmouseover="hover(this)">
+<input type="button" value="Assemble" onclick="assemble()" onmouseover="hover(this)">
+<input type="button" value="Run EIR" onclick="runEIR()" onmouseover="hover(this)">
+<input type="button" value="Run JS" onclick="runJS()" onmouseover="hover(this)">
+
+<ul>
+  <li>"Compile" runs 8cc.js on JavaScript to generate ELVM IR.
+  <li>"Assemble" runs ELVM's assembler (elc.js) for specified
+  language. Language selection makes sense only when you assemble
+  EIR.
+  <li>"Run EIR" runs ELVM IR on JavaScript (eli.js).
+  <li>"Run JS" runs "Assembled code" as JavaScript.
+  <li>You'll see blue and red boxes when you hover your mouse over a
+  button. Blue box is source and red box is destination.
+</ul>
+
+</body>

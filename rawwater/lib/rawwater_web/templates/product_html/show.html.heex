@@ -1,0 +1,21 @@
+<img src={product_image_path(@product)}
+     alt={@product.name}
+     width="1024"
+     height="1024"
+     class="product-hero" />
+
+
+<h1>
+  <%= @product.name %>
+</h1>
+<h2><%= price @product.price %></h2>
+
+<description><%= @product.description %></description>
+
+<p>
+    <.link navigate={Routes.checkout_new_path @conn, :new, @product.id}>
+      buy it now
+    </.link>
+</p>
+
+<.back navigate={~p"/products"}>Back to products</.back>

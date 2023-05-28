@@ -1,0 +1,42 @@
+<h1>Show Ticket</h1>
+
+<ul>
+
+  <li>
+    <strong>Slug:</strong>
+    <%= @ticket.slug %>
+  </li>
+
+  <li>
+    <strong>Encrypted:</strong>
+    <%= @ticket.encrypted %>
+  </li>
+
+  <li>
+    <strong>Reset at:</strong>
+    <%= @ticket.reset_at %>
+  </li>
+
+  <li>
+    <strong>Database:</strong>
+    <%= if @ticket.db_size do %>
+      <%= @ticket.db_size %> bytes
+      <.link navigate={Routes.page_path(@socket, :databass, @ticket.id)}>download</.link>
+      <% else %>
+      no db_size, probably no database
+      <% end %>
+  </li>
+
+</ul>
+
+<span>
+  <.link navigate={Routes.ticket_index_path(@socket, :index)}>list</.link>
+</span>
+
+<h2>danger zone</h2>
+<p>
+  Is the team reporting a weird database error?
+  Would you like them to complain that their database is gone?
+  <button phx-click="delete_database">delete their database</button>
+  :)
+</p>

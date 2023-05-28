@@ -1,0 +1,15 @@
+<h1>Order Placed</h1>
+
+<ul id="order_results">
+  <li>
+    <strong>.the .product:</strong>
+    <%= @product.name %>
+  </li>
+
+  <%= for t <- @hellform.field_seqs do %>
+      <li>
+        <strong><%= Hellform.Field.part_to_human(@hellform.fields[t].name) %>:</strong>
+        <%= @hellform.fields[t].value %>
+      </li>
+      <% end %>
+</ul>

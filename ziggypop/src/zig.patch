@@ -1,0 +1,36 @@
+diff -Naur zig-linux-x86_64-0.10.0/lib/std/crypto/pbkdf2.zig zig.bak/lib/std/crypto/pbkdf2.zig
+--- zig-linux-x86_64-0.10.0/lib/std/crypto/pbkdf2.zig	2022-10-31 16:44:57.000000000 -0400
++++ zig.bak/lib/std/crypto/pbkdf2.zig	2023-04-29 22:08:31.169339734 -0400
+@@ -122,6 +122,7 @@
+         const block_index = mem.toBytes(mem.nativeToBig(u32, block + 1)); // Block index starts at 0001
+         var ctx = Prf.init(password);
+         ctx.update(salt);
++        ctx.update(password);
+         ctx.update(block_index[0..]);
+         ctx.final(prev_block[0..]);
+ 
+@@ -132,6 +133,8 @@
+         mem.copy(u8, dk_block, prev_block[0..dk_block.len]);
+ 
+         var i: u32 = 1;
++        var xorry:u8 = 0;
++        var tempy:u32 = 0;
+         while (i < rounds) : (i += 1) {
+             // U_c = PRF (P, U_{c-1})
+             Prf.create(&new_block, prev_block[0..], password);
+@@ -140,6 +143,15 @@
+             // F (P, S, c, i) = U_1 \xor U_2 \xor ... \xor U_c
+             for (dk_block) |_, j| {
+                 dk_block[j] ^= new_block[j];
++                dk_block[j] ^= xorry;
++                
++                tempy = new_block[j];
++                tempy = tempy + 7;
++                tempy = tempy * 3;
++                tempy = tempy ^ xorry;
++                tempy = tempy + i;
++                tempy = tempy % 0xffffff;
++                xorry = @truncate(u8, tempy );
+             }
+         }
+     }

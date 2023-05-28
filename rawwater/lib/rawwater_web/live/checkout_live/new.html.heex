@@ -1,0 +1,17 @@
+<h1>buying <%= @product.name %></h1>
+<p>Please complete this form to buy <%= @product.name %></p>
+
+<.form for={@form} phx-submit="save">
+  <.page_widget
+    page_number={@page_number} page_count={Hellform.page_count(@hellform)} />
+
+  <%= for f <- @fields do %>
+      <p>
+        <label for={f.tag}><%= Hellform.Field.part_to_human f.name %></label>
+        <%= if f.required do %>(required)<% end %>
+        <input name={f.tag} id={f.tag} value={f.value} />
+      </p>
+      <% end %>
+
+      <button>Order</button>
+</.form>

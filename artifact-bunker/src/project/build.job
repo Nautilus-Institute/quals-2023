@@ -1,0 +1,8 @@
+job:
+  steps:
+    - use: archive
+      name: "{{.Name}}-{{.Commit}}-{{.Timestamp}}"
+      artifacts:
+        - "bunker-expansion-plan.txt"
+        - "new-layer-blueprint.txt"
+

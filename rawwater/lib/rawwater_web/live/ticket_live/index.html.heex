@@ -1,0 +1,28 @@
+<h1>Listing Tickets</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Slug</th>
+      <th>Reset at</th>
+      <th>database size</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="tickets">
+    <%= for ticket <- @tickets do %>
+      <tr id={"ticket-#{ticket.id}"}>
+        <td><%= ticket.slug %></td>
+        <td><%= ticket.reset_at %></td>
+        <td><%= ticket.db_size %></td>
+
+        <td>
+          <.link navigate={Routes.ticket_show_path(@socket, :show, ticket)}>
+            show
+          </.link>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

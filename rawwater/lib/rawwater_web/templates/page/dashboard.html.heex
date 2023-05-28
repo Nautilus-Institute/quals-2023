@@ -1,0 +1,16 @@
+<p>
+  You're holding ticket
+  <span class="ticket"><%= @ticket.slug %></span>.
+</p>
+
+<ul>
+  <li>
+    <.link navigate={Routes.product_path(@conn, :index)}>Show Products</.link>
+  </li>
+  <li>
+    <.link href={Routes.page_path(@conn, :reset)} method="delete">clean out database</.link>
+  </li>
+  <li>
+    <.link href={~p"/logout"} method="delete">log out</.link>
+  </li>
+</ul>

@@ -1,0 +1,137 @@
+From 193294d560da6b10aa6833ca67b29b810746a484 Mon Sep 17 00:00:00 2001
+From: Glenn Smith <couleeapps@gmail.com>
+Date: Thu, 25 May 2023 04:23:24 -0400
+Subject: [PATCH] instruction count shenanigans
+
+---
+ Engine/source/console/codeBlock.cpp        | 12 +++++++++++-
+ Engine/source/console/codeBlock.h          |  3 ++-
+ Engine/source/console/compiledEval.cpp     | 13 +++++++++++--
+ Engine/source/console/consoleFunctions.cpp |  8 ++++++++
+ 4 files changed, 32 insertions(+), 4 deletions(-)
+
+diff --git a/Engine/source/console/codeBlock.cpp b/Engine/source/console/codeBlock.cpp
+index 46b40d441..3de5be63c 100644
+--- a/Engine/source/console/codeBlock.cpp
++++ b/Engine/source/console/codeBlock.cpp
+@@ -482,6 +482,12 @@ bool CodeBlock::read(StringTableEntry fileName, Stream &st)
+    if (lineBreakPairCount)
+       calcBreakList();
+ 
++   if (Con::getBoolVariable("$Debug::DumpByteCode"))
++   {
++      codeSize = codeLength;
++      dumpInstructions();
++   }
++
+    return true;
+ }
+ 
+@@ -745,14 +751,18 @@ String CodeBlock::getFunctionArgs(U32 ip)
+ 
+ //-------------------------------------------------------------------------
+ 
+-void CodeBlock::dumpInstructions(U32 startIp, bool upToReturn)
++void CodeBlock::dumpInstructions(U32 startIp, U32 count, bool upToReturn)
+ {
+    U32 ip = startIp;
+    smInFunction = false;
+    U32 endFuncIp = 0;
+ 
++   U32 i = 0;
+    while (ip < codeSize)
+    {
++      i ++;
++      if (count > 0 && i > count)
++         break;
+       if (ip > endFuncIp)
+       {
+          smInFunction = false;
+diff --git a/Engine/source/console/codeBlock.h b/Engine/source/console/codeBlock.h
+index 57370f683..b015937c7 100644
+--- a/Engine/source/console/codeBlock.h
++++ b/Engine/source/console/codeBlock.h
+@@ -60,6 +60,7 @@ private:
+ public:
+    static bool                      smInFunction;
+    static Compiler::ConsoleParser * smCurrentParser;
++   static U32 smInstCount;
+ 
+    static CodeBlock* getCurrentBlock()
+    {
+@@ -109,7 +110,7 @@ public:
+    void calcBreakList();
+    void clearAllBreaks();
+    void setAllBreaks();
+-   void dumpInstructions(U32 startIp = 0, bool upToReturn = false);
++   void dumpInstructions(U32 startIp = 0, U32 count = 0, bool upToReturn = false);
+ 
+    /// Returns the first breakable line or 0 if none was found.
+    /// @param lineNumber The one based line number.
+diff --git a/Engine/source/console/compiledEval.cpp b/Engine/source/console/compiledEval.cpp
+index 3a6aa76e5..5b6b84b2b 100644
+--- a/Engine/source/console/compiledEval.cpp
++++ b/Engine/source/console/compiledEval.cpp
+@@ -490,7 +490,7 @@ TORQUE_NOINLINE void doSlowMathOp()
+ }
+ 
+ template<FloatOperation Op>
+-TORQUE_FORCEINLINE void doFloatMathOperation()
++void doFloatMathOperation()
+ {
+    ConsoleValue& a = stack[_STK];
+    ConsoleValue& b = stack[_STK - 1];
+@@ -572,7 +572,7 @@ TORQUE_NOINLINE void doSlowIntegerOp()
+ }
+ 
+ template<IntegerOperation Op>
+-TORQUE_FORCEINLINE void doIntOperation()
++void doIntOperation()
+ {
+    ConsoleValue& a = stack[_STK];
+    ConsoleValue& b = stack[_STK - 1];
+@@ -607,7 +607,9 @@ TORQUE_FORCEINLINE void doIntOperation()
+ 
+ //-----------------------------------------------------------------------------
+ 
++U32 CodeBlock::smInstCount = 0;
+ U32 gExecCount = 0;
++
+ ConsoleValue CodeBlock::exec(U32 ip, const char* functionName, Namespace* thisNamespace, U32 argc, ConsoleValue* argv, bool noCalls, StringTableEntry packageName, S32 setFrame)
+ {
+ #ifdef TORQUE_DEBUG
+@@ -763,8 +765,15 @@ ConsoleValue CodeBlock::exec(U32 ip, const char* functionName, Namespace* thisNa
+    static S32 VAL_BUFFER_SIZE = 1024;
+    FrameTemp<char> valBuffer(VAL_BUFFER_SIZE);
+ 
++   bool trace = Con::getBoolVariable("$Debug::TraceInstructions");
++
+    for (;;)
+    {
++      if (trace)
++      {
++         dumpInstructions(ip, 1);
++      }
++      smInstCount++;
+       U32 instruction = code[ip++];
+    breakContinue:
+       switch (instruction)
+diff --git a/Engine/source/console/consoleFunctions.cpp b/Engine/source/console/consoleFunctions.cpp
+index b17909184..6ab8de88d 100644
+--- a/Engine/source/console/consoleFunctions.cpp
++++ b/Engine/source/console/consoleFunctions.cpp
+@@ -2877,3 +2877,11 @@ DefineEngineFunction(systemCommand, S32, (const char* commandLineAction, const c
+    return -1;
+ }
+ #endif
++
++
++DefineEngineFunction( profile, int, ( const char* consoleString ), , "profile(consoleString)" )
++{
++   CodeBlock::smInstCount = 0;
++   ConsoleValue returnValue = Con::evaluate(consoleString, false, NULL);
++   return CodeBlock::smInstCount;
++}
+-- 
+2.32.1 (Apple Git-133)
+

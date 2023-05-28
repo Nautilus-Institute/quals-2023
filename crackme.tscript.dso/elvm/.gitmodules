@@ -1,0 +1,13 @@
+[submodule "8cc"]
+	path = 8cc
+	url = https://github.com/shinh/8cc
+[submodule "Whitespace"]
+	path = Whitespace
+	url = https://github.com/koturn/Whitespace
+[submodule "tinycc"]
+	path = tinycc
+	url = https://github.com/mirror/tinycc
+[submodule "lci"]
+	path = lci
+	url = https://github.com/justinmeza/lci
+	branch = future

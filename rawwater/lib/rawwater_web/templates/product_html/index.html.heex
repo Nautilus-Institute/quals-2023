@@ -1,0 +1,23 @@
+<h1>
+  Listing Products
+</h1>
+
+<.table id="products" rows={@products} row_click={&JS.navigate(~p"/products/#{&1}")}>
+  <:col :let={product} label="">
+    <.link navigate={~p"/products/#{product}"}>
+      <img src={product_thumb_path(product)}
+         alt={product.name}
+         width="64"
+           height="64" />
+    </.link>
+  </:col>
+  <:col :let={product} label="Name">
+    <.link navigate={~p"/products/#{product}"}><%= product.name %></.link></:col>
+  <:col :let={product} label="Description"><%= product.description %></:col>
+  <:col :let={product} label="Price"><%= price product.price %></:col>
+  <:action :let={product}>
+    <div class="sr-only">
+      <.link navigate={~p"/products/#{product}"}>Show</.link>
+    </div>
+  </:action>
+</.table>

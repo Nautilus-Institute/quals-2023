@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>ChatTGE</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .navbar-dark {
+            background-color: rgb(151, 4, 11) !important;
+        }
+        footer p {
+            margin-top: 1rem;
+        }
+        html, body {
+            min-height: 100vh;
+        }
+        #sidebar {
+            width: 260px;
+            height: 100vh;
+            background-color: rgb(32, 32, 32);
+        }
+        @media (max-width: 640px) {
+            #sidebar {
+                display: none !important;
+            }
+        }
+        #sidebar-new-chat {
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.2);
+            margin: 10px;
+            text-align: left;
+            font-size: 14px;
+            line-height: 28px;
+        }
+        #sidebar-new-chat:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        #sidebar-chats {
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+        .sidebar-chat {
+            color: #fff;
+            margin: 0 10px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .sidebar-chat.active {
+            background-color: rgb(52, 53, 65);
+        }
+        #chat {
+            background-color: rgb(52, 53, 65);
+            position: relative;
+            flex-grow: 1;
+        }
+        #chat-messages {
+            flex-grow: 1;
+            max-height: 100vh;
+            overflow: auto;
+            padding-bottom: 100px;
+        }
+        #chat-welcome {
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #chat-welcome h1 {
+            margin-top: 20vh;
+            margin-bottom: 4rem;
+            font-weight: 600;
+            text-align: center;
+        }
+        #chat-welcome-examples {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            max-width: 768px;
+        }
+        @media (max-width: 640px) {
+            #chat-welcome-examples {
+                flex-direction: column;
+            }
+        }
+        .chat-welcome-example {
+            flex: 1 1 0%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            margin: 10px;
+        }
+        .chat-welcome-example h2 {
+            font-size: 1.125rem;
+        }
+        .chat-welcome-example-box {
+            text-align: center;
+            font-size: 14px;
+            background-color: rgb(64, 65, 79);
+            border-radius: 5px;
+            margin: 10px 0;
+            padding: 8px 16px;
+        }
+        #chat-entry {
+            position: absolute;
+            bottom: 0;
+            background-image: linear-gradient(rgba(53, 55, 64, 0), rgb(53, 55, 64) 58.85%);
+            width: 100%;
+        }
+        #regenerate {
+            min-height: 20px;
+        }
+        #chat-entry-inner {
+            padding: 20px;
+            padding-bottom: 10px;
+            flex-grow: 1;
+            justify-content: center;
+        }
+        #chat-entry-area {
+            box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 0px 15px 0px;
+            flex-grow: 1;
+            max-width: 768px;
+        }
+        #chat-input {
+            background-color: rgb(64, 65, 79);
+            background-clip: initial;
+            border: 1px solid rgba(32, 33, 35, 0.5);
+            border-right: none;
+            color: #fff;
+            resize: none;
+            height: 50px;
+            line-height: 36px;
+            text-indent: 8px;
+        }
+        #chat-input:focus {
+            box-shadow: none;
+        }
+        #chat-submit {
+            background-color: rgb(64, 65, 79);
+            border: 1px solid rgba(32, 33, 35, 0.5);
+            border-left: none;
+        }
+        #chat-submit:hover {
+            background-color: rgb(32, 34, 37);
+        }
+        .chat-message {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            justify-content: center;
+            padding: 15px 0 15px 0;
+        }
+        .chat-user-message {
+            color: #fff;
+            background-color: rgb(52, 53, 65);
+        }
+        .chat-system-message {
+            color: rgb(209, 213, 219);
+            background-color: rgb(68, 70, 84);
+        }
+        .chat-message-text {
+            max-width: 768px;
+            flex-grow: 1;
+            margin-top: 6px;
+        }
+        .chat-message-icon {
+            width: 32px;
+            height: 32px;
+            margin: 6px 30px 20px 30px;
+            border-radius: 4px;
+        }
+        .chat-user-message .chat-message-icon {
+            background-color: rgb(8, 18, 149);
+        }
+        .chat-system-message .chat-message-icon {
+            background-color: rgb(149, 8, 18);
+        }
+        .chat-message-icon-text {
+            color: #fff;
+            text-align: center;
+            line-height: 32px;
+        }
+        .chat-message-inner {
+            margin-bottom: 10px;
+            word-wrap: break-word;
+        }
+        #credits {
+            color: rgb(197, 197, 210);
+            font-size: 12px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        #credits a {
+            color: rgb(197, 197, 210);
+        }
+    </style>
+</head>
+<body class="d-flex flex-row">
+    <div id="sidebar" class="d-flex flex-column">
+        <button id="sidebar-new-chat" class="btn">
+            <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
+                stroke-linejoin="round" class="h-4 w-4" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            New chat
+        </button>
+        <div id="sidebar-chats">
+        </div>
+    </div>
+    <div id="chat" class="d-flex flex-row">
+        <div id="chat-messages" class="d-flex flex-column">
+            <div id="chat-welcome">
+                <h1>ChatTGE</h1>
+                <div id="chat-welcome-examples">
+                    <div class="chat-welcome-example">
+                        <h2>Back at it Again</h2>
+                        <div class="chat-welcome-example-box">
+                            The web server you know and love
+                        </div>
+                        <div class="chat-welcome-example-box">
+                            Now with upgraded capabilities
+                        </div>
+                        <div class="chat-welcome-example-box">
+                            All in one hard-coded index.html
+                        </div>
+                    </div>
+                    <div class="chat-welcome-example">
+                        <h2>Modernized and Better</h2>
+                        <div class="chat-welcome-example-box">
+                            None of the bugs from last time
+                        </div>
+                        <div class="chat-welcome-example-box">
+                            Two years of shader engine improvements
+                        </div>
+                        <div class="chat-welcome-example-box">
+                            Convenient windows exe instead of a macOS app
+                        </div>
+                    </div>
+                    <div class="chat-welcome-example">
+                        <h2>Contemporary Memes</h2>
+                        <div class="chat-welcome-example-box">
+                            Hand-rolled SHA-1, base64, and JSON
+                        </div>
+                        <div class="chat-welcome-example-box">
+                            Now accepting 255 of 256 byte values
+                        </div>
+                        <div class="chat-welcome-example-box">
+                            Still no calculator!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="chat-entry" class="d-flex flex-column">
+            <div id="regenerate">
+
+            </div>
+            <div id="chat-entry-inner" class="d-flex flex-row">
+                <div id="chat-entry-area" class="d-flex flex-row">
+                    <div class="input-group">
+                        <textarea id="chat-input" class="form-control" type="text" name="calc"
+                            placeholder="Are humans really any different from LLMs?"></textarea>
+                        <button id="chat-submit" class="btn btn-primary" type="submit" value="Send">
+                            <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
+                                stroke-linejoin="round" class="h-4 w-4 mr-1" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                <line x1="22" y1="2" x2="11" y2="13"></line>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div id="credits">
+                Free CTF Preview. ChatTGE may provide inaccurate parses of messages. <a href="#">ChatTGE DC31Q Version</a>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        let $newChat = document.getElementById("sidebar-new-chat");
+        let $chats = document.getElementById("sidebar-chats");
+        function newChat() {
+                        let chatEntry = document.createElement("div");
+            chatEntry.classList.add("sidebar-chat");
+            chatEntry.innerText = "New Chat";
+            $chats.prepend(chatEntry);
+
+            chatEntry.addEventListener("click", (event) => {
+                for (let child of $chats.children) {
+                    child.classList.remove("active");
+                }
+                chatEntry.classList.add("active");
+            });
+
+            for (let child of $chats.children) {
+                child.classList.remove("active");
+            }
+            chatEntry.classList.add("active");
+        }
+
+        $newChat.addEventListener("click", (event) => {
+            newChat();
+        });
+        newChat();
+
+        let $submit = document.getElementById("chat-submit");
+        let $input = document.getElementById("chat-input");
+        let $result = document.getElementById("chat-messages");
+        let $welcome = document.getElementById("chat-welcome");
+
+        let ws = null;
+        let starting = false;
+        let queue = [];
+
+        function echo(text, className) {
+            let textChild = null;
+            if ($result.children.length > 0 && $result.children[$result.children.length - 1].classList.contains(className)) {
+                let child = $result.children[$result.children.length - 1];
+                textChild = child.children[child.children.length - 1];
+            } else {
+                let child = document.createElement("div");
+                child.classList.add("chat-message");
+                child.classList.add(className);
+                $result.appendChild(child);
+
+                iconChild = document.createElement("div");
+                iconChild.classList.add("chat-message-icon");
+                child.appendChild(iconChild);
+
+                if (className === 'chat-system-message') {
+                    let iconSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+                    iconSvg.setAttribute("stroke", "white");
+                    iconSvg.setAttribute("fill", "none");
+                    iconSvg.setAttribute("stroke-width", "48");
+                    iconSvg.setAttribute("viewBox", "-128 -128 1280 1280");
+                    iconSvg.setAttribute("stroke-linecap", "round");
+                    iconSvg.setAttribute("stroke-linejoin", "round");
+
+                    // Why did I do this to myself
+                    let polys = [
+                        [187, 514, 205, 445, 397, 337, 452, 400, 339, 456, 261, 912, 137, 911, 234, 554],
+                        [187, 514, 252, 486, 234, 554],
+                        [349, 278, 361, 188, 503, 91, 507, 187],
+                        [349, 278, 397, 337, 452, 400, 339, 456, 414, 518, 508, 479, 563, 533, 671, 505, 507, 187],
+                        [503, 91, 507, 187, 671, 505, 686, 610, 695, 608, 667, 406, 653, 363, 658, 404],
+                        [641, 367, 653, 363, 658, 404],
+                        [563, 553, 671, 505, 686, 610, 695, 608, 834, 584, 880, 712, 471, 763, 474, 654, 568, 633],
+                        [880, 712, 885, 750, 520, 780, 563, 793, 497, 803, 397, 779, 401, 739, 471, 763],
+                        [520, 780, 562, 777, 563, 793],
+                        [383, 912, 397, 779, 401, 739, 471, 763, 474, 654, 411, 619, 414, 518, 339, 456, 261, 912]
+                    ];
+                    for (let poly of polys) {
+                        let polySvg = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+                        polySvg.setAttribute("points", poly.join(" "));
+                        iconSvg.appendChild(polySvg);
+                    }
+                    iconChild.appendChild(iconSvg);
+                } else {
+                    let iconText = document.createElement("div");
+                    iconText.innerText = "U";
+                    iconText.classList.add("chat-message-icon-text");
+                    iconChild.appendChild(iconText);
+                }
+
+                textChild = document.createElement("div");
+                textChild.classList.add("chat-message-text");
+                child.appendChild(textChild);
+            }
+
+            let innerChild = document.createElement("div");
+            innerChild.classList.add("chat-message-inner");
+            innerChild.innerText = text;
+            textChild.appendChild(innerChild);
+
+            $result.scrollTo(0, $result.scrollHeight);
+        }
+
+        function init() {
+            if (starting) {
+                return;
+            }
+            starting = true;
+
+            $welcome.style.display = "none";
+
+            let url = new URL(window.location);
+            url.protocol = "ws:";
+            url.pathname = "chat";
+            url.hash = "";
+            let socket = new WebSocket(url);
+            socket.addEventListener('close', (event) => {
+                echo("Connection lost... Reconnecting", "chat-system-message");
+                echo("Code " + event.code + ": " +  event.reason, "chat-system-message");
+                // Try again
+                ws = null;
+                setTimeout(init, 1000);
+            });
+            socket.addEventListener('error', (event) => {
+                // Try again
+                ws = null;
+                setTimeout(init, 1000);
+            });
+            socket.addEventListener('open', () => {
+                for (let message of queue) {
+                    socket.send(message);
+                }
+                queue = [];
+                ws = socket;
+                starting = false;
+            });
+            socket.addEventListener('message', (event) => {
+                try {
+                    let value = JSON.parse(event.data);
+                    if (value.type === "result") {
+                        echo(value.value, "chat-system-message");
+                    } else if (value.type === "stderr") {
+                        echo(value.value, "chat-system-message");
+                    }
+                } catch (e) {
+
+                }
+            })
+        }
+
+        function sendInput() {
+            let input = $input.value;
+            $input.value = "";
+
+            echo(input, "chat-user-message");
+            if (ws === null) {
+                init();
+                queue.push(JSON.stringify({
+                    type: "message",
+                    value: input
+                }));
+            } else {
+                ws.send(JSON.stringify({
+                    type: "message",
+                    value: input
+                }));
+            }
+        }
+
+        $input.addEventListener("keypress", (event) => {
+            if (event.key === "Enter" || event.key === "Return") {
+                sendInput();
+                event.preventDefault();
+            }
+        });
+
+        $submit.addEventListener("click", () => {
+            sendInput();
+        });
+    </script>
+</body>
+</html>

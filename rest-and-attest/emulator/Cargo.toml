@@ -1,0 +1,7 @@
+[workspace]
+
+members = [
+    "uploader",
+    "sfm",
+    "sfm-sys"
+]

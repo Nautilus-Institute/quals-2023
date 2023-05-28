@@ -1,0 +1,181 @@
+
+
+// Finding the flag bytes loaded in the DSO by OP_LOADIMMED_UINT (bytes 0-48)
+
+for i in range(len(conts)-3):
+    stuff=conts[i:i+4]
+    if stuff[0:1] == b'C' && stuff[1:2] == b'D' && stuff[3:4] == b'4':
+        if stuff[2] >= 0x20 && stuff[2] < 0x80:
+            print(stuff[2:3].decode())
+
+// they practically FALL out
+b'\x00'
+b'\x00'
+b'\x00'
+b'\x00'
+b'\x18'
+b'\x00'
+b'\x00'
+b'\x01'
+b'\x00'
+b'\x01'
+b'\x00'
+b'f'
+b'\x01'
+b'l'
+b'\x01'
+b'a'
+b'\x01'
+b'g'
+b'\x01'
+b'{'
+b'v'
+b'm'
+b'p'
+b'r'
+b'o'
+b't'
+b'e'
+b'c'
+b't'
+b'?'
+b'_'
+b'w'
+b'h'
+b'e'
+b'r'
+b'e'
+b'\x00'
+b'_'
+b'r'
+b'w'
+b'u'
+b'e'
+b'x'
+b'_'
+b'{'
+b'r'
+b'~'
+b'e'
+b'\x81'
+b'_'
+b'\x84'
+b'g'
+b'\x87'
+b'o'
+b'\x8a'
+b'i'
+b'\x8d'
+b'n'
+b'\x90'
+b'g'
+b'\x93'
+b'_'
+b'\x96'
+b'w'
+b'\x99'
+b'e'
+b'\x9c'
+b'_'
+b'\x9f'
+b'\x00'
+b'l'
+b'\xa4'
+b'l'
+b'\xa7'
+b'_'
+b'\xaa'
+b'n'
+b'\xad'
+b'e'
+b'\xb0'
+b'e'
+b'\xb3'
+b'd'
+b'\xb6'
+b'_'
+b'\xb9'
+b'p'
+b'\xbc'
+b'r'
+b'\xbf'
+b'o'
+b'\xc2'
+b't'
+b'\xc5'
+b'e'
+b'\xc8'
+b'c'
+b'\xcb'
+b't'
+b'\xce'
+b'i'
+b'\xd1'
+
+
+// The bullshit at the end with a big matrix (bytes 49-64)
+// Z3 solve the matrix for the final flag bytes
+// inb4 someone guesses all of this
+
+for i in range(len(conts)-8):
+    stuff=conts[i:i+8]
+    if stuff[0:1] == b'C' && stuff[1:2] == b'D' && stuff[2] == 0xff && stuff[7:8] == b'4':
+         print(u32(stuff[3:7]))
+(1327,)
+(1394,)
+(1332,)
+(1347,)
+(1372,)
+(1360,)
+(1394,)
+(1365,)
+(1333,)
+(1347,)
+(1326,)
+(1338,)
+(1391,)
+(1347,)
+(1324,)
+(1333,)
+
+
+a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z = z3.Ints("a b c d e f g h i j k l m n o p q r s t u v w x y z")
+
+result=z3.solve(
+a > 0, a < 256, (a + b + c + d + e + f + g + h + i + j + k + l + m + n + o == 1327),
+b > 0, b < 256, (b + c + d + e + f + g + h + i + j + k + l + m + n + o + p == 1394),
+c > 0, c < 256, (c + d + e + f + g + h + i + j + k + l + m + n + o + p + a == 1332),
+d > 0, d < 256, (d + e + f + g + h + i + j + k + l + m + n + o + p + a + b == 1347),
+e > 0, e < 256, (e + f + g + h + i + j + k + l + m + n + o + p + a + b + c == 1372),
+f > 0, f < 256, (f + g + h + i + j + k + l + m + n + o + p + a + b + c + d == 1360),
+g > 0, g < 256, (g + h + i + j + k + l + m + n + o + p + a + b + c + d + e == 1394),
+h > 0, h < 256, (h + i + j + k + l + m + n + o + p + a + b + c + d + e + f == 1365),
+i > 0, i < 256, (i + j + k + l + m + n + o + p + a + b + c + d + e + f + g == 1333),
+j > 0, j < 256, (j + k + l + m + n + o + p + a + b + c + d + e + f + g + h == 1347),
+k > 0, k < 256, (k + l + m + n + o + p + a + b + c + d + e + f + g + h + i == 1326),
+l > 0, l < 256, (l + m + n + o + p + a + b + c + d + e + f + g + h + i + j == 1338),
+m > 0, m < 256, (m + n + o + p + a + b + c + d + e + f + g + h + i + j + k == 1391),
+n > 0, n < 256, (n + o + p + a + b + c + d + e + f + g + h + i + j + k + l == 1347),
+o > 0, o < 256, (o + p + a + b + c + d + e + f + g + h + i + j + k + l + m == 1324),
+p > 0, p < 256, (p + a + b + c + d + e + f + g + h + i + j + k + l + m + n == 1333),
+)
+
+[a = 48,
+ m = 95,
+ l = 51,
+ k = 104,
+ j = 116,
+ i = 95,
+ h = 109,
+ g = 77,
+ f = 48,
+ e = 82,
+ d = 70,
+ c = 95,
+ b = 110,
+ n = 118,
+ o = 109,
+ p = 115]
+
+bytes(bytearray([result[var].as_long() for var in [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p]]))
+b'0n_FR0Mm_th3_vms'

@@ -1,0 +1,10 @@
+FROM arm64v8/ubuntu
+
+ARG DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && apt-get install -y clang cmake build-essential
+
+# https://mcilloni.ovh/2021/02/09/cxx-cross-clang/
+RUN tar cf /sysroot.tar.gz /lib /usr/include /usr/lib /usr/local/lib /usr/local/include /usr/bin/aarch64-linux-gnu-strip /usr/bin/aarch64-linux-gnu-nm
+
+CMD ["/bin/bash"]

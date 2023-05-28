@@ -1,0 +1,12 @@
+{
+    "name": "rawwater-solver",
+    "version": "0.0.1",
+    "author": "Vito <vito@nautilus.institute>",
+    "type": "module",
+    "dependencies": {
+        "@types/node": "^20.1.0",
+        "playwright": "^1.33.0",
+        "tsm": "^2.3.0",
+        "typescript": "^5.0.4"
+    }
+}

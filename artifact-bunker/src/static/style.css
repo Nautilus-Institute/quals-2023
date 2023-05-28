@@ -1,0 +1,392 @@
+@import url('https://fonts.googleapis.com/css2?family=Averia+Gruesa+Libre&family=Rubik+Dirt&display=swap');
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    /*background-image: url(static/plaster.jpg);*/
+    background-image: url(/static/concrete_1.jpg);
+}
+.plate {
+    background-image: url(/static/steel.jpg);
+    margin-top: 10em;
+    font-size: 1.5em;
+    padding: 2.2em;
+    box-shadow: 0 16px 20px 7px #0000009e;
+    position: relative;
+    border-radius: 8px;
+    font-family: 'Averia Gruesa Libre', sans-serif;
+    margin-bottom: 5em;
+}
+#ticket-error {
+    color: #fc5555;
+}
+html {
+    overflow-x: hidden;
+}
+.content {
+    max-width: 712px;
+    margin: auto;
+    margin-top: 2em;
+}
+.content.wide {
+    max-width: 1024px;
+    margin: auto;
+    margin-top: 2em;
+}
+input {
+    width: 100%;
+    padding: 1em;
+    font-size: 12pt;
+}
+#file-list {
+    margin-top: -4px;
+}
+
+.screw {
+    background-image: url(/static/screw.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 1.5em;
+    height: 1.5em;
+    z-index: 2;
+    position: absolute;
+    box-shadow: 1px 5px 13px 1px #000000b0;
+    border-radius: 19px;
+}
+
+.display {
+    background-image: url(/static/display.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    max-width: 712px;
+    max-height: 551px;
+    width: 100vw;
+    height: 77vw;
+    position: relative;
+}
+
+.inner-shadow {
+    overflow: hidden;
+    position: absolute;
+    left: 15.5%;
+    top: 15%;
+    width: 70.5%;
+    height: 64%;
+    box-shadow: 0 28px 33px 93px black;
+    -webkit-transform: perspective(875px) rotateX(7deg);
+    z-index: -1;
+    background-color: black;
+}
+
+.screen-background {
+    overflow: hidden;
+    position: absolute;
+    left: calc( 16% + .5em );
+    top: calc( 15.5% + .5em );
+    width: calc( 69% - 1em );
+    height: 61%;
+    background-color: #3b3ace;
+    border-radius: 8px;
+    box-shadow: #00c4ff 1px 1px 20px 0px;
+    -webkit-transform: perspective(875px) rotateX(7deg);
+    opacity: 0;
+}
+.screen-fade {
+    transition: opacity .5s;
+}
+
+@font-face {
+    font-family: 'segment';
+    src: url(/static/DSEG14Modern-Regular.ttf);
+}
+
+.artifact-list {
+    margin: 0;
+    height: 78%;
+    line-height: 161%;
+    word-spacing: 12px;
+}
+
+.inner-window {
+    overflow: hidden;
+    position: absolute;
+    left: 18.5%;
+    top: 20%;
+    width: 64%;
+    margin: 0;
+    height: 57%;
+    background-color: #3b3ace;
+    font-family: 'segment', monospace;
+    color: #dedede;
+    /*line-height: 1.5em;*/
+    font-size: min( 2.6vw, 14pt );
+    -webkit-transform: perspective(875px) rotateX(7deg);
+    font-weight: 600;
+}
+.inner-window a, .inner-window pre {
+    font-family: 'segment', monospace;
+    color: #dedede;
+    /*line-height: 1.5em;*/
+    font-size: min( 2.6vw, 14pt );
+}
+#ticket {
+    background-color: #4646e3;
+    color: #dedede;
+    font-family: 'segment', monospace;
+    resize: none;
+    font-weight: 600;
+    width: calc( 97% - .4em );
+    padding-top: 0.4em;
+    padding-left: 0.4em;
+    font-size: min( 2.6vw, 14pt );
+    height: 5em;
+    margin-top: 1em;
+}
+#ticket::placeholder {
+    color: #dedede;
+}
+
+.left {
+    width: 50%;
+    display: inline-block;
+    text-align: left;
+}
+.right {
+    width: 50%;
+    display: inline-block;
+    text-align: right;
+}
+
+#package {
+    position: absolute;
+    width: 5.8%;
+    background-color: transparent;
+    height: 6%;
+    top: 65.8%;
+    left: 3.3%;
+    opacity: .5;
+    cursor: pointer;
+}
+#clean {
+    position: absolute;
+    width: 5.6%;
+    background-color: transparent;
+    /* background: red; */
+    height: 6%;
+    top: 65.3%;
+    left: 91.3%;
+    opacity: .5;
+    cursor: pointer;
+}
+#up {
+    position: absolute;
+    width: 5.8%;
+    background-color: transparent;
+    /* background: blue; */
+    height: 6%;
+    top: 85.3%;
+    left: 66.3%;
+    opacity: .5;
+    cursor: pointer;
+}
+#down {
+    position: absolute;
+    width: 5.6%;
+    background-color: transparent;
+    height: 6%;
+    top: 85.3%;
+    left: 73.5%;
+    opacity: .5;
+    cursor: pointer;
+}
+#b5 {
+    position: absolute;
+    width: 5.8%;
+    background-color: transparent;
+    height: 6%;
+    top: 54.4%;
+    left: 3.9%;
+    opacity: .5;
+    cursor: pointer;
+}
+#b2 {
+    position: absolute;
+    width: 5.6%;
+    background-color: transparent;
+    /* background: red; */
+    height: 6%;
+    top: 31%;
+    left: 90.5%;
+    opacity: .5;
+    cursor: pointer;
+}
+#b3 {
+    position: absolute;
+    width: 5.8%;
+    background-color: transparent;
+    height: 6%;
+    top: 43%;
+    left: 4.3%;
+    opacity: .5;
+    cursor: pointer;
+}
+#b4 {
+    position: absolute;
+    width: 5.6%;
+    background-color: transparent;
+    height: 6%;
+    top: 42.3%;
+    left: 90.8%;
+    opacity: .5;
+    cursor: pointer;
+}
+#b1 {
+    position: absolute;
+    width: 5.6%;
+    background-color: transparent;
+    height: 6%;
+    top: 31.8%;
+    left: 4.7%;
+    opacity: .5;
+    cursor: pointer;
+}
+#b6 {
+    position: absolute;
+    width: 5.6%;
+    background-color: transparent;
+    /* background: red; */
+    height: 6%;
+    top: 53.6%;
+    left: 91.0%;
+    opacity: .5;
+    cursor: pointer;
+}
+#back {
+    position: absolute;
+    width: 5.6%;
+    background-color: transparent;
+    /* background: red; */
+    height: 6%;
+    top: 20.0%;
+    left: 90.3%;
+    opacity: .5;
+    cursor: pointer;
+}
+#updir {
+    position: absolute;
+    width: 5.6%;
+    background-color: transparent;
+    height: 6%;
+    top: 20.8%;
+    left: 5.1%;
+    opacity: .5;
+    cursor: pointer;
+}
+#cfg {
+    position: absolute;
+    width: 5.6%;
+    background-color: transparent;
+    /* background: red; */
+    height: 6%;
+    top: 85.7%;
+    left: 27.9%;
+    opacity: .5;
+    cursor: pointer;
+}
+#power {
+    position: absolute;
+    width: 5.6%;
+    background-color: transparent;
+    /* background: red; */
+    height: 6%;
+    top: 85.8%;
+    left: 20.8%;
+    opacity: .5;
+    cursor: pointer;
+}
+
+  
+button {
+    border-radius: 5px;
+
+}
+#page-header {
+    /*font-family: needle;*/
+    font-family: 'Rubik Dirt', sans-serif;
+    background-color: #3A7A00;
+    background-image: url(/static/camo.jpg);
+    /*text-shadow: 0px 0px 5px black;*/
+    text-shadow: 0px 0px 5px black, 0px 0px 15px black, 0px 0px 12px black, 0px 0px 10px black;
+    box-shadow: black 0px 7px 20px 0px;
+    color: #ffcda4;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 6.5em;
+}
+#page-header h1 {
+    margin: 0;
+    font-size: 4em;
+    font-weight: 400;
+}
+#page-header p {
+    margin: 0;
+    font-size: 14px;
+    font-size: 1.7em;
+}
+.browser-window {
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.12), 0 1px 2px rgba(0,0,0,.24);
+    margin: 20px auto;
+    width: 600px;
+    height: 400px;
+}
+#title-bar {
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #e0e0e0;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+}
+#title-bar h2 {
+    margin: 0;
+}
+#size-buttons {
+    display: flex;
+}
+.size-button {
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    cursor:pointer
+}
+.size-button:hover{
+  opacity:.7
+}
+.size-button:focus{
+  outline:none
+}
+.close-button {
+  height:12px;width:12px;background-color:#FF605C;margin-right:.5rem
+}
+
+.minimize-button{
+  height:12px;width:12px;background-color:#FFBD44;margin-right:.5rem
+}
+
+ .zoom-button{
+  height:12px;width:12px;background-color:#00CA4E
+ }
+ 
+ #browser-content{
+   overflow:auto;height:calc(100% - 30px);padding:.5rem;
+   background-color: white;
+ }
+
+ ul {
+     list-style:none;padding-left:.5rem;margin-top:.5rem
+ }
+
+

@@ -1,0 +1,12 @@
+.text
+ mov B, val
+ load A, B
+ putc A
+ add B, 1
+ load A, B
+ putc A
+ exit
+
+.data
+ val:
+ .string "hi"
