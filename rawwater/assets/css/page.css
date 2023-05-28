@@ -1,0 +1,29 @@
+ol.page_picker {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+ol.page_picker li {
+    display: inline-block;
+}
+
+ol.page_picker li .non_page {
+    padding: 0.5rem;
+    border: 1px solid grey;
+    border-radius: 0.25rem;
+    background-color: #fff4e8;
+}
+
+ol.page_picker li a:link,
+ol.page_picker li a:visited {
+    border: 1px solid blue;
+    color: blue;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+    text-decoration: none;
+}
+
+ol.page_picker li a:hover {
+    color: white;
+    background-color: blue;
+}

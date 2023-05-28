@@ -1,0 +1,60 @@
+version: '3'
+services:
+  db:
+    image: postgres:14
+    environment:
+      - POSTGRES_PASSWORD=ohfod6eeseMeeX9ohr8z
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+  db_tools:
+    image: postgres:14
+    command: bash
+    volumes:
+      - ./tmp:/tmp
+    depends_on:
+      - db
+    environment: &db_conn
+      PGUSER: postgres
+      PGHOST: db
+      PGPASSWORD: ohfod6eeseMeeX9ohr8z
+      DATABASE_URL: postgresql://postgres:ohfod6eeseMeeX9ohr8z@db/postgres
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile-dev
+    depends_on:
+      - db
+    volumes:
+      - ./:/app
+    ports:
+      - "4000:4000"
+    environment:
+      <<: *db_conn
+      HTTP_PORT: 4000
+  web-prod:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    restart: "no"
+    profiles:
+      - "dont_lets_start"
+  adminer:
+    image: adminer
+    ports:
+      - "4432:8080"
+    depends_on:
+      - db
+
+  solver:
+    build: solver
+    depends_on:
+      - web
+    restart: "no"
+    profiles:
+      - "dont_lets_start"
+    volumes:
+      - ./solver/tmp:/solver/tmp
+
+volumes:
+  pgdata:

@@ -1,0 +1,46 @@
+@font-face {
+    font-family: "Jost";
+    src: url("/fonts/Jost-VariableFont_wght.woff2") format("woff2"),
+         local("Jost");
+}
+
+@font-face {
+    font-family: "Jost";
+    font-style: italic;
+    src: url("/fonts/Jost-Italic-VariableFont_wght.woff2") format("woff2"),
+         local("Jost Italic");
+}
+@font-face {
+    font-family: "Overpass Mono";
+    font-weight: 700;
+    src: url("/fonts/overpass-mono-bold.woff2") format("woff2"),
+         local("Overpass Mono");
+}
+@font-face {
+  font-family: "Overpass Mono";
+  font-weight: 300;
+  src: url("/fonts/overpass-mono-light.woff2") format("woff2"),
+       local("Overpass Mono");
+}
+@font-face {
+  font-family: "Overpass Mono";
+  font-weight: 400;
+  src: url("/fonts/overpass-mono-regular.woff2") format("woff2"),
+       local("Overpass Mono");
+}
+@font-face {
+  font-family: "Overpass Mono";
+  font-weight: 600;
+  src: url("/fonts/overpass-mono-semibold.woff2") format("woff2"),
+       local("Overpass Mono");
+}
+
+body, input, button, h1, h2, h3, h4, h5, h6 {
+    font-family: "Jost", "Futura", Helvetica, "Arial Unicode MS", Arial, sans-serif;
+    font-size: 14pt;
+}
+
+.hexy {
+    font-family: "Overpass Mono";
+    font-size: 0.9em;
+}

@@ -1,0 +1,9 @@
+<h1>big vito's raw water emporium</h1>
+
+<p>stay thirsty my friends</p>
+
+<.form for={@ticket_form} action={Routes.tickets_path(@conn, :create)}>
+  <.input label="ticket please:" field={@ticket_form[:encrypted_ticket]} />
+
+  <button type="submit">enter</button>
+</.form>
