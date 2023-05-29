@@ -1,3 +1,5 @@
+Challenge by @defendtheworld.
+
 ### Challenge Description:
 
 Hello Special Agent. We've gained access to a network, the password is
