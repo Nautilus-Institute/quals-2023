@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>def con quals data dump</title>
+<link href='statdump.css' media='all' rel='stylesheet'>
+<meta charset='utf-8'>
+</head>
+<body>
+<div id='content'>
+<nav>
+<ul>
+<li>
+<a href='../challenges.html'>All Challenges</a>
+</li>
+<li>
+<a href='../index.html'>Statdump Root</a>
+</li>
+</ul>
+</nav>
+<h1>ptrace-me-maybe</h1>
+<p>
+LiveCTF
+</p>
+<p><p>Arbitrary syscalls were too powerful and cseagle solved last year's challenge without even needing a script. This year, you only get one syscall, and you'll probably need a script.</p>
+</p>
+<h1>Solution Statistics</h1>
+<table>
+<tbody>
+<tr>
+<th>bcrypted answer</th>
+<td></td>
+</tr>
+<tr>
+<th>observations</th>
+<td>184</td>
+</tr>
+<tr>
+<th>solves</th>
+<td>31</td>
+</tr>
+<tr>
+<th>points</th>
+<td>1</td>
+</tr>
+<tr>
+<th>average solve seconds</th>
+<td>
+6691
+seconds, or
+about 2 hours
+</td>
+</tr>
+<tr>
+<th>stddev solve time</th>
+<td>
+3492
+seconds, or
+about 1 hour
+</td>
+</tr>
+</tbody>
+</table>
+<h2>Solutions Over Time</h2>
+<h2>solving teams:</h2>
+<p>solved by 31 teams</p>
+<table>
+<thead>
+<tr>
+<th>team</th>
+<th>solved at</th>
+<th>it took</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+<a href='../teams/354.html'>The Parliament of Ducks</a>
+</th>
+<td>
+2023-05-27 20:21:16 UTC
+</td>
+<td>
+4541
+seconds, or
+1.26
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/507.html'>orgakraut</a>
+</th>
+<td>
+2023-05-27 20:28:06 UTC
+</td>
+<td>
+4441
+seconds, or
+1.23
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/304.html'>Blue Water</a>
+</th>
+<td>
+2023-05-27 20:30:03 UTC
+</td>
+<td>
+4980
+seconds, or
+1.38
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/520.html'>Norsecode&#39;23</a>
+</th>
+<td>
+2023-05-27 20:30:04 UTC
+</td>
+<td>
+4465
+seconds, or
+1.24
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/241.html'>Maple Bacon</a>
+</th>
+<td>
+2023-05-27 20:31:13 UTC
+</td>
+<td>
+2143
+seconds, or
+0.6
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/207.html'>HypeBoy</a>
+</th>
+<td>
+2023-05-27 20:34:13 UTC
+</td>
+<td>
+2660
+seconds, or
+0.74
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/490.html'>TWN48</a>
+</th>
+<td>
+2023-05-27 20:37:08 UTC
+</td>
+<td>
+2693
+seconds, or
+0.75
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/763.html'>DTRUSH</a>
+</th>
+<td>
+2023-05-27 20:52:01 UTC
+</td>
+<td>
+5281
+seconds, or
+1.47
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/393.html'>Shellphish</a>
+</th>
+<td>
+2023-05-27 20:57:23 UTC
+</td>
+<td>
+6717
+seconds, or
+1.87
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/103.html'>SiestaFiestaPwneameEsta</a>
+</th>
+<td>
+2023-05-27 20:59:13 UTC
+</td>
+<td>
+2903
+seconds, or
+0.81
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/7.html'>SuperDiceCode</a>
+</th>
+<td>
+2023-05-27 21:01:14 UTC
+</td>
+<td>
+3778
+seconds, or
+1.05
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/21.html'>P1G BuT S4D</a>
+</th>
+<td>
+2023-05-27 21:03:06 UTC
+</td>
+<td>
+6984
+seconds, or
+1.94
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/535.html'>mhackeroni</a>
+</th>
+<td>
+2023-05-27 21:08:08 UTC
+</td>
+<td>
+7097
+seconds, or
+1.97
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/4.html'>if this doesn&#39;t work we&#39;ll get more for next year</a>
+</th>
+<td>
+2023-05-27 21:15:10 UTC
+</td>
+<td>
+7042
+seconds, or
+1.96
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/9.html'>Straw Hat</a>
+</th>
+<td>
+2023-05-27 21:17:10 UTC
+</td>
+<td>
+4627
+seconds, or
+1.29
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/710.html'>The Flat Network Society</a>
+</th>
+<td>
+2023-05-27 21:18:08 UTC
+</td>
+<td>
+3341
+seconds, or
+0.93
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/5.html'>侍‎‏</a>
+</th>
+<td>
+2023-05-27 21:30:13 UTC
+</td>
+<td>
+5462
+seconds, or
+1.52
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/377.html'>Katzebin</a>
+</th>
+<td>
+2023-05-27 21:41:12 UTC
+</td>
+<td>
+9143
+seconds, or
+2.54
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/311.html'>iine</a>
+</th>
+<td>
+2023-05-27 21:43:03 UTC
+</td>
+<td>
+6166
+seconds, or
+1.71
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/750.html'>PTB_WTL_0T</a>
+</th>
+<td>
+2023-05-27 21:43:03 UTC
+</td>
+<td>
+8943
+seconds, or
+2.48
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/14.html'>OSUSEC</a>
+</th>
+<td>
+2023-05-27 22:04:13 UTC
+</td>
+<td>
+7434
+seconds, or
+2.07
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/73.html'>untitled</a>
+</th>
+<td>
+2023-05-27 22:09:34 UTC
+</td>
+<td>
+7900
+seconds, or
+2.19
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/195.html'>JMP FS:[RCX]</a>
+</th>
+<td>
+2023-05-27 22:12:34 UTC
+</td>
+<td>
+7901
+seconds, or
+2.19
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/231.html'>undef1ned</a>
+</th>
+<td>
+2023-05-27 22:13:08 UTC
+</td>
+<td>
+8843
+seconds, or
+2.46
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/499.html'>Never Stop Exploiting</a>
+</th>
+<td>
+2023-05-27 22:18:08 UTC
+</td>
+<td>
+8255
+seconds, or
+2.29
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/982.html'>pwn2</a>
+</th>
+<td>
+2023-05-27 22:22:13 UTC
+</td>
+<td>
+313
+seconds, or
+0.09
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/536.html'>Team Baguette</a>
+</th>
+<td>
+2023-05-27 22:31:13 UTC
+</td>
+<td>
+11738
+seconds, or
+3.26
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/612.html'>🇫🇷🛹🐻</a>
+</th>
+<td>
+2023-05-27 23:15:27 UTC
+</td>
+<td>
+11094
+seconds, or
+3.08
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/805.html'>mode13h</a>
+</th>
+<td>
+2023-05-27 23:21:34 UTC
+</td>
+<td>
+11754
+seconds, or
+3.26
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/657.html'>tasteless</a>
+</th>
+<td>
+2023-05-27 23:21:35 UTC
+</td>
+<td>
+15302
+seconds, or
+4.25
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/213.html'>Heel Holland Hackt</a>
+</th>
+<td>
+2023-05-27 23:54:30 UTC
+</td>
+<td>
+13469
+seconds, or
+3.74
+hours
+</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</body>
+</html>

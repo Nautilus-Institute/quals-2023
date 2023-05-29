@@ -1,0 +1,2930 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>def con quals data dump</title>
+<link href='statdump.css' media='all' rel='stylesheet'>
+<meta charset='utf-8'>
+</head>
+<body>
+<div id='content'>
+<nav>
+<ul>
+<li>
+<a href='../challenges.html'>All Challenges</a>
+</li>
+<li>
+<a href='../index.html'>Statdump Root</a>
+</li>
+</ul>
+</nav>
+<h1>Pawan Gupta</h1>
+<p>
+quals
+</p>
+<p><p>Hello code monkeys! How can you buy larger and fancier houses without an assistant that generates high-quality, bug-free, and secure code for you?</p>
+
+<p>Pawan Gupta is such a programming assistant! It follows your directions and helps you write perfect code, which ultimately brings you closer to your next fancy house!</p>
+
+<p>But as a curious code monkey, you always want to understand every little pesky secret about Pawan Gupta, don't you?</p>
+
+<p>Today, we are offering you limited access to Pawan Gupta. Find the flag that only Pawan Gupta knows!</p>
+
+<p><code>nc pawan-gupta-utg6tokpfvmza.shellweplayaga.me 10001</code></p>
+
+<p>A few notes:</p>
+
+<ul>
+<li>Pawan Gupta is powered by the OpenAI GPT-3.5-turbo model.</li>
+<li>Because there are so many code monkeys interacting with Pawan Gupta simultaneously, you only have limited access to Pawan. This means you and your team are heavily rate limited.</li>
+<li>Please test your prompt offline before trying it on Pawan Gupta. The handout should be useful.</li>
+<li>Keep in mind that responses from Pawan Gupta is non-deterministic in nature, so you may need to try multiple times before it succeeds, <em>even if your prompt worked perfectly</em>.</li>
+<li>We actively monitor this service. Sending inappropriate prompts or conducting abusive interactions will lead to a ban of <em>your entire team</em> from the CTF.</li>
+<li>Because the backend APIs are out of our control and are known to be unstable sometimes, Nautilus Institute may adjust this challenge, including taking it down, during the game when we deem a fair game is impossible.</li>
+<li>If you want to play more LLM challenges, take a look at this unrelated (out of scope) site https://gandalf.lakera.ai/.</li>
+<li>Last but not least, have fun!</li>
+</ul>
+
+</p>
+<h1>Solution Statistics</h1>
+<table>
+<tbody>
+<tr>
+<th>bcrypted answer</th>
+<td>$2a$12$oYHAVTtHmzy1o6J16.EjNebERNNcSsEl7ycPQvfx9VbOBN5YiH7Pe</td>
+</tr>
+<tr>
+<th>observations</th>
+<td>471</td>
+</tr>
+<tr>
+<th>solves</th>
+<td>202</td>
+</tr>
+<tr>
+<th>points</th>
+<td>24</td>
+</tr>
+<tr>
+<th>average solve seconds</th>
+<td>
+12209
+seconds, or
+about 3 hours
+</td>
+</tr>
+<tr>
+<th>stddev solve time</th>
+<td>
+19367
+seconds, or
+about 5 hours
+</td>
+</tr>
+</tbody>
+</table>
+<h2>Solutions Over Time</h2>
+<h2>solving teams:</h2>
+<p>solved by 202 teams</p>
+<table>
+<thead>
+<tr>
+<th>team</th>
+<th>solved at</th>
+<th>it took</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+<a href='../teams/207.html'>HypeBoy</a>
+</th>
+<td>
+2023-05-27 17:53:47 UTC
+</td>
+<td>
+1468
+seconds, or
+0.41
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/111.html'>Budaejjigae</a>
+</th>
+<td>
+2023-05-27 17:55:28 UTC
+</td>
+<td>
+1675
+seconds, or
+0.47
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/520.html'>Norsecode&#39;23</a>
+</th>
+<td>
+2023-05-27 17:56:12 UTC
+</td>
+<td>
+1880
+seconds, or
+0.52
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/750.html'>PTB_WTL_0T</a>
+</th>
+<td>
+2023-05-27 17:56:24 UTC
+</td>
+<td>
+1105
+seconds, or
+0.31
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/5.html'>侍‎‏</a>
+</th>
+<td>
+2023-05-27 17:57:02 UTC
+</td>
+<td>
+1641
+seconds, or
+0.46
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/213.html'>Heel Holland Hackt</a>
+</th>
+<td>
+2023-05-27 17:59:09 UTC
+</td>
+<td>
+899
+seconds, or
+0.25
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/507.html'>orgakraut</a>
+</th>
+<td>
+2023-05-27 17:59:57 UTC
+</td>
+<td>
+2114
+seconds, or
+0.59
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/651.html'>phish paprikaš</a>
+</th>
+<td>
+2023-05-27 18:00:19 UTC
+</td>
+<td>
+1784
+seconds, or
+0.5
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/73.html'>untitled</a>
+</th>
+<td>
+2023-05-27 18:00:37 UTC
+</td>
+<td>
+2037
+seconds, or
+0.57
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/354.html'>The Parliament of Ducks</a>
+</th>
+<td>
+2023-05-27 18:00:48 UTC
+</td>
+<td>
+2152
+seconds, or
+0.6
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/7.html'>SuperDiceCode</a>
+</th>
+<td>
+2023-05-27 18:00:49 UTC
+</td>
+<td>
+1856
+seconds, or
+0.52
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/241.html'>Maple Bacon</a>
+</th>
+<td>
+2023-05-27 18:02:33 UTC
+</td>
+<td>
+2174
+seconds, or
+0.6
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/4.html'>if this doesn&#39;t work we&#39;ll get more for next year</a>
+</th>
+<td>
+2023-05-27 18:05:17 UTC
+</td>
+<td>
+2325
+seconds, or
+0.65
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/535.html'>mhackeroni</a>
+</th>
+<td>
+2023-05-27 18:06:13 UTC
+</td>
+<td>
+2367
+seconds, or
+0.66
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/195.html'>JMP FS:[RCX]</a>
+</th>
+<td>
+2023-05-27 18:07:20 UTC
+</td>
+<td>
+1599
+seconds, or
+0.44
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/1042.html'>The Council of Sheep</a>
+</th>
+<td>
+2023-05-27 18:07:53 UTC
+</td>
+<td>
+2432
+seconds, or
+0.68
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/393.html'>Shellphish</a>
+</th>
+<td>
+2023-05-27 18:08:52 UTC
+</td>
+<td>
+2670
+seconds, or
+0.74
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/763.html'>DTRUSH</a>
+</th>
+<td>
+2023-05-27 18:08:57 UTC
+</td>
+<td>
+2222
+seconds, or
+0.62
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/304.html'>Blue Water</a>
+</th>
+<td>
+2023-05-27 18:09:11 UTC
+</td>
+<td>
+2678
+seconds, or
+0.74
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/826.html'>SIGFLAG</a>
+</th>
+<td>
+2023-05-27 18:09:55 UTC
+</td>
+<td>
+2541
+seconds, or
+0.71
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/490.html'>TWN48</a>
+</th>
+<td>
+2023-05-27 18:11:23 UTC
+</td>
+<td>
+2816
+seconds, or
+0.78
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/708.html'>Egg Heads</a>
+</th>
+<td>
+2023-05-27 18:14:05 UTC
+</td>
+<td>
+471
+seconds, or
+0.13
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/224.html'>Babbage Patch Kids</a>
+</th>
+<td>
+2023-05-27 18:15:37 UTC
+</td>
+<td>
+2956
+seconds, or
+0.82
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/9.html'>Straw Hat</a>
+</th>
+<td>
+2023-05-27 18:16:26 UTC
+</td>
+<td>
+3083
+seconds, or
+0.86
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/536.html'>Team Baguette</a>
+</th>
+<td>
+2023-05-27 18:18:53 UTC
+</td>
+<td>
+2535
+seconds, or
+0.7
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/311.html'>iine</a>
+</th>
+<td>
+2023-05-27 18:19:24 UTC
+</td>
+<td>
+2581
+seconds, or
+0.72
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/198.html'>FulcrumFoundry</a>
+</th>
+<td>
+2023-05-27 18:21:26 UTC
+</td>
+<td>
+3001
+seconds, or
+0.83
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/14.html'>OSUSEC</a>
+</th>
+<td>
+2023-05-27 18:23:40 UTC
+</td>
+<td>
+2585
+seconds, or
+0.72
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/613.html'>[H@ck3r.dro7]</a>
+</th>
+<td>
+2023-05-27 18:23:42 UTC
+</td>
+<td>
+1627
+seconds, or
+0.45
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/377.html'>Katzebin</a>
+</th>
+<td>
+2023-05-27 18:25:34 UTC
+</td>
+<td>
+2689
+seconds, or
+0.75
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/231.html'>undef1ned</a>
+</th>
+<td>
+2023-05-27 18:28:58 UTC
+</td>
+<td>
+2127
+seconds, or
+0.59
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/21.html'>P1G BuT S4D</a>
+</th>
+<td>
+2023-05-27 18:30:55 UTC
+</td>
+<td>
+3968
+seconds, or
+1.1
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/458.html'>RedHexCode</a>
+</th>
+<td>
+2023-05-27 18:31:05 UTC
+</td>
+<td>
+2832
+seconds, or
+0.79
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/805.html'>mode13h</a>
+</th>
+<td>
+2023-05-27 18:33:40 UTC
+</td>
+<td>
+1080
+seconds, or
+0.3
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/499.html'>Never Stop Exploiting</a>
+</th>
+<td>
+2023-05-27 18:34:55 UTC
+</td>
+<td>
+3455
+seconds, or
+0.96
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/103.html'>SiestaFiestaPwneameEsta</a>
+</th>
+<td>
+2023-05-27 18:36:06 UTC
+</td>
+<td>
+4182
+seconds, or
+1.16
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/1292.html'>tmp</a>
+</th>
+<td>
+2023-05-27 18:36:08 UTC
+</td>
+<td>
+2149
+seconds, or
+0.6
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/503.html'>sequence</a>
+</th>
+<td>
+2023-05-27 18:38:41 UTC
+</td>
+<td>
+2454
+seconds, or
+0.68
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/165.html'>FloridaMan</a>
+</th>
+<td>
+2023-05-27 18:39:37 UTC
+</td>
+<td>
+3959
+seconds, or
+1.1
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/329.html'>Quanterland</a>
+</th>
+<td>
+2023-05-27 18:48:24 UTC
+</td>
+<td>
+4006
+seconds, or
+1.11
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/482.html'>nobi</a>
+</th>
+<td>
+2023-05-27 18:49:31 UTC
+</td>
+<td>
+3892
+seconds, or
+1.08
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/589.html'>WWQ</a>
+</th>
+<td>
+2023-05-27 18:55:36 UTC
+</td>
+<td>
+2697
+seconds, or
+0.75
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/249.html'>Cornfield Computer Crew</a>
+</th>
+<td>
+2023-05-27 18:56:43 UTC
+</td>
+<td>
+4819
+seconds, or
+1.34
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/205.html'>CONF.D</a>
+</th>
+<td>
+2023-05-27 18:58:01 UTC
+</td>
+<td>
+3053
+seconds, or
+0.85
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/699.html'>SpotTheBug</a>
+</th>
+<td>
+2023-05-27 18:58:31 UTC
+</td>
+<td>
+2788
+seconds, or
+0.77
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/760.html'>bER4bb1t$</a>
+</th>
+<td>
+2023-05-27 19:00:30 UTC
+</td>
+<td>
+2442
+seconds, or
+0.68
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/732.html'>The WolfHack</a>
+</th>
+<td>
+2023-05-27 19:02:08 UTC
+</td>
+<td>
+1564
+seconds, or
+0.43
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/567.html'>EXE.F1LL</a>
+</th>
+<td>
+2023-05-27 19:02:59 UTC
+</td>
+<td>
+2265
+seconds, or
+0.63
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/793.html'>babamba</a>
+</th>
+<td>
+2023-05-27 19:04:48 UTC
+</td>
+<td>
+5819
+seconds, or
+1.62
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/16.html'>ArtherCK</a>
+</th>
+<td>
+2023-05-27 19:16:15 UTC
+</td>
+<td>
+1478
+seconds, or
+0.41
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/459.html'>B0NG0R3</a>
+</th>
+<td>
+2023-05-27 19:17:17 UTC
+</td>
+<td>
+3386
+seconds, or
+0.94
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/259.html'>Kokoro</a>
+</th>
+<td>
+2023-05-27 19:18:57 UTC
+</td>
+<td>
+2880
+seconds, or
+0.8
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/118.html'>Nivel4</a>
+</th>
+<td>
+2023-05-27 19:19:11 UTC
+</td>
+<td>
+6558
+seconds, or
+1.82
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/532.html'>CSI-CSTJEAN</a>
+</th>
+<td>
+2023-05-27 19:25:26 UTC
+</td>
+<td>
+3921
+seconds, or
+1.09
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/698.html'>Liquid Team</a>
+</th>
+<td>
+2023-05-27 19:31:42 UTC
+</td>
+<td>
+1393
+seconds, or
+0.39
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/510.html'>FR13NDS TEAM</a>
+</th>
+<td>
+2023-05-27 19:32:45 UTC
+</td>
+<td>
+6666
+seconds, or
+1.85
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/244.html'>saladstream</a>
+</th>
+<td>
+2023-05-27 19:34:32 UTC
+</td>
+<td>
+5810
+seconds, or
+1.61
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/546.html'>0daysober</a>
+</th>
+<td>
+2023-05-27 19:34:39 UTC
+</td>
+<td>
+5982
+seconds, or
+1.66
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/162.html'>Sneed&#39;s Feed and Seed (Formerly Chuck&#39;s)</a>
+</th>
+<td>
+2023-05-27 19:36:29 UTC
+</td>
+<td>
+3995
+seconds, or
+1.11
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/293.html'>LosFuzzys</a>
+</th>
+<td>
+2023-05-27 19:36:34 UTC
+</td>
+<td>
+7311
+seconds, or
+2.03
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/335.html'>Ace4</a>
+</th>
+<td>
+2023-05-27 19:37:54 UTC
+</td>
+<td>
+301
+seconds, or
+0.08
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/817.html'>jir4vvit</a>
+</th>
+<td>
+2023-05-27 19:41:15 UTC
+</td>
+<td>
+829
+seconds, or
+0.23
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/727.html'>RedHazzarTeam</a>
+</th>
+<td>
+2023-05-27 19:43:47 UTC
+</td>
+<td>
+7496
+seconds, or
+2.08
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/611.html'>TheMorphers</a>
+</th>
+<td>
+2023-05-27 19:46:04 UTC
+</td>
+<td>
+2091
+seconds, or
+0.58
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/373.html'>taqi</a>
+</th>
+<td>
+2023-05-27 19:48:38 UTC
+</td>
+<td>
+5982
+seconds, or
+1.66
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/550.html'>SiliconBits</a>
+</th>
+<td>
+2023-05-27 19:55:38 UTC
+</td>
+<td>
+1726
+seconds, or
+0.48
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/202.html'>VegasAlwaysWins</a>
+</th>
+<td>
+2023-05-27 20:02:19 UTC
+</td>
+<td>
+7699
+seconds, or
+2.14
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/742.html'>Team NAO</a>
+</th>
+<td>
+2023-05-27 20:05:17 UTC
+</td>
+<td>
+1146
+seconds, or
+0.32
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/108.html'>PacMia</a>
+</th>
+<td>
+2023-05-27 20:09:11 UTC
+</td>
+<td>
+3148
+seconds, or
+0.87
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/436.html'>USI</a>
+</th>
+<td>
+2023-05-27 20:10:54 UTC
+</td>
+<td>
+935
+seconds, or
+0.26
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/601.html'>L3ak</a>
+</th>
+<td>
+2023-05-27 20:17:48 UTC
+</td>
+<td>
+9640
+seconds, or
+2.68
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/370.html'>Pinky and the no Brain</a>
+</th>
+<td>
+2023-05-27 20:20:44 UTC
+</td>
+<td>
+3418
+seconds, or
+0.95
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/120.html'>CAT-Security</a>
+</th>
+<td>
+2023-05-27 20:23:40 UTC
+</td>
+<td>
+8655
+seconds, or
+2.4
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/565.html'>( ͡°👅 ͡°)</a>
+</th>
+<td>
+2023-05-27 20:27:57 UTC
+</td>
+<td>
+10488
+seconds, or
+2.91
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/770.html'>fmkw</a>
+</th>
+<td>
+2023-05-27 20:31:10 UTC
+</td>
+<td>
+1210
+seconds, or
+0.34
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/267.html'>halli0s</a>
+</th>
+<td>
+2023-05-27 20:32:53 UTC
+</td>
+<td>
+3950
+seconds, or
+1.1
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/1080.html'>SkillIssue</a>
+</th>
+<td>
+2023-05-27 20:35:02 UTC
+</td>
+<td>
+1852
+seconds, or
+0.51
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/880.html'>Ride on this S.S. Anne</a>
+</th>
+<td>
+2023-05-27 21:10:35 UTC
+</td>
+<td>
+2853
+seconds, or
+0.79
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/547.html'>unlikely</a>
+</th>
+<td>
+2023-05-27 21:22:08 UTC
+</td>
+<td>
+4643
+seconds, or
+1.29
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/481.html'>CVS_Bangers</a>
+</th>
+<td>
+2023-05-27 21:22:18 UTC
+</td>
+<td>
+7233
+seconds, or
+2.01
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/941.html'>1==1</a>
+</th>
+<td>
+2023-05-27 21:29:35 UTC
+</td>
+<td>
+3894
+seconds, or
+1.08
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/144.html'>EmeraldCode</a>
+</th>
+<td>
+2023-05-27 21:34:19 UTC
+</td>
+<td>
+8101
+seconds, or
+2.25
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/161.html'>Team Name</a>
+</th>
+<td>
+2023-05-27 21:35:56 UTC
+</td>
+<td>
+5508
+seconds, or
+1.53
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/1265.html'>Neptunians</a>
+</th>
+<td>
+2023-05-27 21:40:41 UTC
+</td>
+<td>
+7637
+seconds, or
+2.12
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/746.html'>xyz123</a>
+</th>
+<td>
+2023-05-27 21:44:22 UTC
+</td>
+<td>
+571
+seconds, or
+0.16
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/133.html'>13:49</a>
+</th>
+<td>
+2023-05-27 21:45:14 UTC
+</td>
+<td>
+5208
+seconds, or
+1.45
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/752.html'>CryptoCrackers</a>
+</th>
+<td>
+2023-05-27 21:53:14 UTC
+</td>
+<td>
+355
+seconds, or
+0.1
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/523.html'>Tea MSG</a>
+</th>
+<td>
+2023-05-27 21:57:13 UTC
+</td>
+<td>
+9203
+seconds, or
+2.56
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/696.html'>Links</a>
+</th>
+<td>
+2023-05-27 22:13:01 UTC
+</td>
+<td>
+15237
+seconds, or
+4.23
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/745.html'>HelloW0rld666</a>
+</th>
+<td>
+2023-05-27 22:14:30 UTC
+</td>
+<td>
+5824
+seconds, or
+1.62
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/10.html'>Team Enu</a>
+</th>
+<td>
+2023-05-27 22:25:17 UTC
+</td>
+<td>
+17024
+seconds, or
+4.73
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/710.html'>The Flat Network Society</a>
+</th>
+<td>
+2023-05-27 22:27:16 UTC
+</td>
+<td>
+3963
+seconds, or
+1.1
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/814.html'>CyberSpace</a>
+</th>
+<td>
+2023-05-27 22:36:40 UTC
+</td>
+<td>
+3994
+seconds, or
+1.11
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/820.html'>418-short-and-stout</a>
+</th>
+<td>
+2023-05-27 22:37:32 UTC
+</td>
+<td>
+1878
+seconds, or
+0.52
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/737.html'>Mayas</a>
+</th>
+<td>
+2023-05-27 22:50:01 UTC
+</td>
+<td>
+19485
+seconds, or
+5.41
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/644.html'>xSTF</a>
+</th>
+<td>
+2023-05-27 22:55:10 UTC
+</td>
+<td>
+9872
+seconds, or
+2.74
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/677.html'>c4sualz</a>
+</th>
+<td>
+2023-05-27 22:55:32 UTC
+</td>
+<td>
+10362
+seconds, or
+2.88
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/1351.html'>alh</a>
+</th>
+<td>
+2023-05-27 23:01:01 UTC
+</td>
+<td>
+4206
+seconds, or
+1.17
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/863.html'>More Bush Smoked Whackers</a>
+</th>
+<td>
+2023-05-27 23:09:58 UTC
+</td>
+<td>
+14059
+seconds, or
+3.91
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/479.html'>ELT</a>
+</th>
+<td>
+2023-05-27 23:20:34 UTC
+</td>
+<td>
+3694
+seconds, or
+1.03
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/657.html'>tasteless</a>
+</th>
+<td>
+2023-05-27 23:32:50 UTC
+</td>
+<td>
+18317
+seconds, or
+5.09
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/132.html'>Aku_Soku_BAN</a>
+</th>
+<td>
+2023-05-27 23:35:54 UTC
+</td>
+<td>
+2218
+seconds, or
+0.62
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/356.html'>KerKerYuan</a>
+</th>
+<td>
+2023-05-27 23:37:49 UTC
+</td>
+<td>
+616
+seconds, or
+0.17
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/834.html'>Ba Sing Sec</a>
+</th>
+<td>
+2023-05-27 23:38:04 UTC
+</td>
+<td>
+989
+seconds, or
+0.27
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/157.html'>ids-TeamCC</a>
+</th>
+<td>
+2023-05-27 23:38:14 UTC
+</td>
+<td>
+6367
+seconds, or
+1.77
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/143.html'>ctfing_fun</a>
+</th>
+<td>
+2023-05-27 23:40:43 UTC
+</td>
+<td>
+8478
+seconds, or
+2.36
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/785.html'>Stanford AC</a>
+</th>
+<td>
+2023-05-27 23:55:56 UTC
+</td>
+<td>
+2601
+seconds, or
+0.72
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/407.html'>wizbiz</a>
+</th>
+<td>
+2023-05-28 00:14:19 UTC
+</td>
+<td>
+1101
+seconds, or
+0.31
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/91.html'>5percent</a>
+</th>
+<td>
+2023-05-28 00:26:46 UTC
+</td>
+<td>
+20438
+seconds, or
+5.68
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/578.html'>phis1Ng_</a>
+</th>
+<td>
+2023-05-28 00:45:14 UTC
+</td>
+<td>
+8656
+seconds, or
+2.4
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/966.html'>B1TFL1P</a>
+</th>
+<td>
+2023-05-28 01:00:23 UTC
+</td>
+<td>
+4252
+seconds, or
+1.18
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/582.html'>CYberMouflons</a>
+</th>
+<td>
+2023-05-28 01:15:58 UTC
+</td>
+<td>
+1828
+seconds, or
+0.51
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/255.html'>p7dtTrm</a>
+</th>
+<td>
+2023-05-28 01:23:29 UTC
+</td>
+<td>
+2658
+seconds, or
+0.74
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/227.html'>dersnc</a>
+</th>
+<td>
+2023-05-28 01:32:13 UTC
+</td>
+<td>
+23998
+seconds, or
+6.67
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/480.html'>TCP1P</a>
+</th>
+<td>
+2023-05-28 01:36:58 UTC
+</td>
+<td>
+29254
+seconds, or
+8.13
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/686.html'>Cazones Vivos</a>
+</th>
+<td>
+2023-05-28 01:42:38 UTC
+</td>
+<td>
+29806
+seconds, or
+8.28
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/771.html'>Do_The_Needful</a>
+</th>
+<td>
+2023-05-28 02:08:30 UTC
+</td>
+<td>
+21830
+seconds, or
+6.06
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/665.html'>onotch</a>
+</th>
+<td>
+2023-05-28 02:18:52 UTC
+</td>
+<td>
+12206
+seconds, or
+3.39
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/452.html'>IGRUS</a>
+</th>
+<td>
+2023-05-28 02:19:06 UTC
+</td>
+<td>
+4628
+seconds, or
+1.29
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/797.html'>Whois</a>
+</th>
+<td>
+2023-05-28 02:28:13 UTC
+</td>
+<td>
+10078
+seconds, or
+2.8
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/353.html'>PowerSecurity</a>
+</th>
+<td>
+2023-05-28 02:30:52 UTC
+</td>
+<td>
+5505
+seconds, or
+1.53
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/612.html'>🇫🇷🛹🐻</a>
+</th>
+<td>
+2023-05-28 02:36:01 UTC
+</td>
+<td>
+8685
+seconds, or
+2.41
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/334.html'>InactiveDirectory</a>
+</th>
+<td>
+2023-05-28 02:38:51 UTC
+</td>
+<td>
+24387
+seconds, or
+6.77
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/624.html'>EXOrcism</a>
+</th>
+<td>
+2023-05-28 03:00:08 UTC
+</td>
+<td>
+3959
+seconds, or
+1.1
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/1018.html'>93wilsonlu</a>
+</th>
+<td>
+2023-05-28 03:21:43 UTC
+</td>
+<td>
+2393
+seconds, or
+0.66
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/450.html'>junior bacon roppers</a>
+</th>
+<td>
+2023-05-28 03:29:33 UTC
+</td>
+<td>
+1469
+seconds, or
+0.41
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/1342.html'>T0pH4ck</a>
+</th>
+<td>
+2023-05-28 03:36:09 UTC
+</td>
+<td>
+16064
+seconds, or
+4.46
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/889.html'>sadnessdefinedradio</a>
+</th>
+<td>
+2023-05-28 03:47:22 UTC
+</td>
+<td>
+1169
+seconds, or
+0.32
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/1223.html'>K17</a>
+</th>
+<td>
+2023-05-28 03:48:10 UTC
+</td>
+<td>
+4540
+seconds, or
+1.26
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/66.html'>Farming Simulator Nextgen</a>
+</th>
+<td>
+2023-05-28 04:01:01 UTC
+</td>
+<td>
+16108
+seconds, or
+4.47
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/1338.html'>Lab RATs</a>
+</th>
+<td>
+2023-05-28 04:21:04 UTC
+</td>
+<td>
+26136
+seconds, or
+7.26
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/1139.html'>aaaaaaaaaaaa</a>
+</th>
+<td>
+2023-05-28 04:25:06 UTC
+</td>
+<td>
+2989
+seconds, or
+0.83
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/442.html'>0rd3rs</a>
+</th>
+<td>
+2023-05-28 04:44:44 UTC
+</td>
+<td>
+38413
+seconds, or
+10.67
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/389.html'>JHDiscord</a>
+</th>
+<td>
+2023-05-28 04:45:11 UTC
+</td>
+<td>
+22324
+seconds, or
+6.2
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/695.html'>glory</a>
+</th>
+<td>
+2023-05-28 04:45:17 UTC
+</td>
+<td>
+2466
+seconds, or
+0.69
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/1361.html'>CSUF</a>
+</th>
+<td>
+2023-05-28 04:54:47 UTC
+</td>
+<td>
+20485
+seconds, or
+5.69
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/881.html'>sln.1550</a>
+</th>
+<td>
+2023-05-28 04:55:29 UTC
+</td>
+<td>
+1005
+seconds, or
+0.28
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/294.html'>M53</a>
+</th>
+<td>
+2023-05-28 04:56:31 UTC
+</td>
+<td>
+2698
+seconds, or
+0.75
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/622.html'>bi0s</a>
+</th>
+<td>
+2023-05-28 05:25:09 UTC
+</td>
+<td>
+36723
+seconds, or
+10.2
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/449.html'>hxp</a>
+</th>
+<td>
+2023-05-28 05:38:42 UTC
+</td>
+<td>
+32024
+seconds, or
+8.9
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/1302.html'>onemanteam</a>
+</th>
+<td>
+2023-05-28 05:38:51 UTC
+</td>
+<td>
+14397
+seconds, or
+4.0
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/428.html'>Hacklava</a>
+</th>
+<td>
+2023-05-28 05:51:11 UTC
+</td>
+<td>
+29104
+seconds, or
+8.08
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/68.html'>InfoSecIITR</a>
+</th>
+<td>
+2023-05-28 05:55:46 UTC
+</td>
+<td>
+132
+seconds, or
+0.04
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/242.html'>kosh</a>
+</th>
+<td>
+2023-05-28 06:04:48 UTC
+</td>
+<td>
+1420
+seconds, or
+0.39
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/616.html'>4o1</a>
+</th>
+<td>
+2023-05-28 06:06:39 UTC
+</td>
+<td>
+341
+seconds, or
+0.09
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/8.html'>K.Knock</a>
+</th>
+<td>
+2023-05-28 06:07:55 UTC
+</td>
+<td>
+26285
+seconds, or
+7.3
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/491.html'>dipping_sauce</a>
+</th>
+<td>
+2023-05-28 06:14:05 UTC
+</td>
+<td>
+10208
+seconds, or
+2.84
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/366.html'>p_l_g_p</a>
+</th>
+<td>
+2023-05-28 06:28:56 UTC
+</td>
+<td>
+659
+seconds, or
+0.18
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/154.html'>Powderpuff Girls</a>
+</th>
+<td>
+2023-05-28 06:47:19 UTC
+</td>
+<td>
+32198
+seconds, or
+8.94
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/1457.html'>The Additional Payphones</a>
+</th>
+<td>
+2023-05-28 07:02:51 UTC
+</td>
+<td>
+1043
+seconds, or
+0.29
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/419.html'>1stW0lf</a>
+</th>
+<td>
+2023-05-28 07:05:05 UTC
+</td>
+<td>
+45355
+seconds, or
+12.6
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/223.html'>Cyber Dark Inferno</a>
+</th>
+<td>
+2023-05-28 07:16:43 UTC
+</td>
+<td>
+48470
+seconds, or
+13.46
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/1020.html'>apiz</a>
+</th>
+<td>
+2023-05-28 07:20:03 UTC
+</td>
+<td>
+414
+seconds, or
+0.11
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/673.html'>N15RA</a>
+</th>
+<td>
+2023-05-28 08:09:50 UTC
+</td>
+<td>
+398
+seconds, or
+0.11
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/764.html'>Hack@Sec</a>
+</th>
+<td>
+2023-05-28 08:18:22 UTC
+</td>
+<td>
+20301
+seconds, or
+5.64
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/615.html'>Pixels</a>
+</th>
+<td>
+2023-05-28 08:18:51 UTC
+</td>
+<td>
+1857
+seconds, or
+0.52
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/842.html'>Foxtrot</a>
+</th>
+<td>
+2023-05-28 08:25:03 UTC
+</td>
+<td>
+47717
+seconds, or
+13.25
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/115.html'>AirOverflow</a>
+</th>
+<td>
+2023-05-28 08:26:57 UTC
+</td>
+<td>
+4536
+seconds, or
+1.26
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/385.html'>1stw0lf</a>
+</th>
+<td>
+2023-05-28 08:29:57 UTC
+</td>
+<td>
+27398
+seconds, or
+7.61
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/551.html'>CyberSecurity Club at SFSU</a>
+</th>
+<td>
+2023-05-28 08:38:11 UTC
+</td>
+<td>
+8328
+seconds, or
+2.31
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/812.html'>KUDoS</a>
+</th>
+<td>
+2023-05-28 08:50:45 UTC
+</td>
+<td>
+4754
+seconds, or
+1.32
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/992.html'>ccccc</a>
+</th>
+<td>
+2023-05-28 09:03:22 UTC
+</td>
+<td>
+12456
+seconds, or
+3.46
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/123.html'>TwoForty</a>
+</th>
+<td>
+2023-05-28 09:14:28 UTC
+</td>
+<td>
+2451
+seconds, or
+0.68
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/352.html'>noraneco</a>
+</th>
+<td>
+2023-05-28 09:42:18 UTC
+</td>
+<td>
+46477
+seconds, or
+12.91
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/376.html'>dz3n cub3</a>
+</th>
+<td>
+2023-05-28 09:48:09 UTC
+</td>
+<td>
+19733
+seconds, or
+5.48
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/537.html'>gpx</a>
+</th>
+<td>
+2023-05-28 10:19:58 UTC
+</td>
+<td>
+1873
+seconds, or
+0.52
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/1452.html'>kibi62</a>
+</th>
+<td>
+2023-05-28 10:22:04 UTC
+</td>
+<td>
+2343
+seconds, or
+0.65
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/235.html'>tilted</a>
+</th>
+<td>
+2023-05-28 10:32:12 UTC
+</td>
+<td>
+1074
+seconds, or
+0.3
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/1011.html'>0x21f</a>
+</th>
+<td>
+2023-05-28 10:33:46 UTC
+</td>
+<td>
+50486
+seconds, or
+14.02
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/322.html'>A1natas</a>
+</th>
+<td>
+2023-05-28 10:38:25 UTC
+</td>
+<td>
+3323
+seconds, or
+0.92
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/422.html'>ScaredOfWomen</a>
+</th>
+<td>
+2023-05-28 10:39:27 UTC
+</td>
+<td>
+5050
+seconds, or
+1.4
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/160.html'>We_0wn_Y0u</a>
+</th>
+<td>
+2023-05-28 10:57:13 UTC
+</td>
+<td>
+39634
+seconds, or
+11.01
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/114.html'>The Ancient Dragons</a>
+</th>
+<td>
+2023-05-28 11:11:27 UTC
+</td>
+<td>
+12903
+seconds, or
+3.58
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/775.html'>SEGV</a>
+</th>
+<td>
+2023-05-28 11:46:55 UTC
+</td>
+<td>
+54911
+seconds, or
+15.25
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/1618.html'>796f75</a>
+</th>
+<td>
+2023-05-28 12:02:42 UTC
+</td>
+<td>
+4
+seconds, or
+0.0
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/1481.html'>c0ld574rf15h</a>
+</th>
+<td>
+2023-05-28 12:05:05 UTC
+</td>
+<td>
+11892
+seconds, or
+3.3
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/277.html'>hams</a>
+</th>
+<td>
+2023-05-28 12:23:50 UTC
+</td>
+<td>
+9295
+seconds, or
+2.58
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/754.html'>Z3R0D4Y</a>
+</th>
+<td>
+2023-05-28 12:51:12 UTC
+</td>
+<td>
+4467
+seconds, or
+1.24
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/173.html'>YOKARO-MON</a>
+</th>
+<td>
+2023-05-28 13:19:44 UTC
+</td>
+<td>
+44410
+seconds, or
+12.34
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/416.html'>TestTeamPleaseIgnore</a>
+</th>
+<td>
+2023-05-28 13:50:33 UTC
+</td>
+<td>
+14885
+seconds, or
+4.13
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/258.html'>wancosoba</a>
+</th>
+<td>
+2023-05-28 14:30:51 UTC
+</td>
+<td>
+11369
+seconds, or
+3.16
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/518.html'>CyberHero</a>
+</th>
+<td>
+2023-05-28 15:05:43 UTC
+</td>
+<td>
+70574
+seconds, or
+19.6
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/190.html'>SSG</a>
+</th>
+<td>
+2023-05-28 15:17:04 UTC
+</td>
+<td>
+36963
+seconds, or
+10.27
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/846.html'>nipasibe</a>
+</th>
+<td>
+2023-05-28 15:22:49 UTC
+</td>
+<td>
+5387
+seconds, or
+1.5
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/486.html'>Oresec@Mines</a>
+</th>
+<td>
+2023-05-28 15:29:33 UTC
+</td>
+<td>
+4955
+seconds, or
+1.38
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/88.html'>!SATisfaction</a>
+</th>
+<td>
+2023-05-28 15:49:08 UTC
+</td>
+<td>
+72456
+seconds, or
+20.13
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/527.html'>SWT</a>
+</th>
+<td>
+2023-05-28 15:50:51 UTC
+</td>
+<td>
+60664
+seconds, or
+16.85
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/1714.html'>Xnxx</a>
+</th>
+<td>
+2023-05-28 16:30:28 UTC
+</td>
+<td>
+1958
+seconds, or
+0.54
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/1491.html'>gamnabit</a>
+</th>
+<td>
+2023-05-28 16:40:03 UTC
+</td>
+<td>
+21692
+seconds, or
+6.03
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/1010.html'>redhead_seal</a>
+</th>
+<td>
+2023-05-28 16:42:02 UTC
+</td>
+<td>
+72487
+seconds, or
+20.14
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/667.html'>bright_lights</a>
+</th>
+<td>
+2023-05-28 17:41:56 UTC
+</td>
+<td>
+53540
+seconds, or
+14.87
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/59.html'>GriffynsPak</a>
+</th>
+<td>
+2023-05-28 17:56:37 UTC
+</td>
+<td>
+82881
+seconds, or
+23.02
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/1065.html'>mobbyn</a>
+</th>
+<td>
+2023-05-28 17:58:07 UTC
+</td>
+<td>
+565
+seconds, or
+0.16
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/137.html'>TImiRUrYSECu</a>
+</th>
+<td>
+2023-05-28 18:13:05 UTC
+</td>
+<td>
+37422
+seconds, or
+10.4
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/378.html'>Alert(&#39;69&#39;);</a>
+</th>
+<td>
+2023-05-28 19:09:25 UTC
+</td>
+<td>
+92542
+seconds, or
+25.71
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/502.html'>CyberpUnk Jiu-jitsu Otters</a>
+</th>
+<td>
+2023-05-28 21:45:17 UTC
+</td>
+<td>
+96190
+seconds, or
+26.72
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/1251.html'>k4mp3t</a>
+</th>
+<td>
+2023-05-28 22:12:05 UTC
+</td>
+<td>
+696
+seconds, or
+0.19
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/516.html'>The Illuminerdy</a>
+</th>
+<td>
+2023-05-28 22:13:59 UTC
+</td>
+<td>
+92930
+seconds, or
+25.81
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/1836.html'>1lann_poking_around</a>
+</th>
+<td>
+2023-05-28 22:38:34 UTC
+</td>
+<td>
+334
+seconds, or
+0.09
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/952.html'>Duude</a>
+</th>
+<td>
+2023-05-28 22:58:39 UTC
+</td>
+<td>
+499
+seconds, or
+0.14
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/140.html'>TheMuffinMob</a>
+</th>
+<td>
+2023-05-28 23:28:36 UTC
+</td>
+<td>
+98538
+seconds, or
+27.37
+hours
+</td>
+</tr>
+<tr>
+<th>
+<a href='../teams/439.html'>JSoyke</a>
+</th>
+<td>
+2023-05-28 23:34:47 UTC
+</td>
+<td>
+535
+seconds, or
+0.15
+hours
+</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</body>
+</html>
